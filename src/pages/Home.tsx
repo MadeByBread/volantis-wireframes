@@ -1,3 +1,4 @@
+import { ArrowRight as ArrowRightIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 import BenchmarkChart from "../components/BenchmarkChart";
 import SolutionSlider from "../components/SolutionSlider";
@@ -7,27 +8,6 @@ import {
   Placeholder,
   Section,
 } from "../components/wireframe";
-
-function HeroCtaArrow() {
-  return (
-    <svg
-      width="18"
-      height="18"
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden="true"
-      className="shrink-0"
-    >
-      <path
-        d="M5 12h14M13 6l6 6-6 6"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
 
 export default function Home() {
   return (
@@ -43,10 +23,10 @@ export default function Home() {
 
           <div className="flex flex-col gap-10 pt-16 pb-24 lg:flex-row lg:items-end lg:gap-10">
             <div className="w-full max-w-[280px] shrink-0 pb-6 text-lg leading-[1.3] font-medium text-[#57534e]">
-              <p>Models grew 10,000&times;. GPU memory grew ~17&times;.</p>
+              <p>Models grew 10,000&times;. GPU memory grew 17&times;.</p>
               <p className="mt-4">
                 We move data with light instead of copper, so you can pack
-                ~100&times; more memory into an inference system.
+                100&times; more memory into an inference system.
               </p>
             </div>
 
@@ -64,7 +44,12 @@ export default function Home() {
                 className="inline-flex h-12 items-center justify-center gap-1 rounded-full bg-[#ff5500] px-5 text-lg font-semibold leading-none text-white transition hover:bg-[#e64d00]"
               >
                 Reserve capacity
-                <HeroCtaArrow />
+                <ArrowRightIcon
+                  size={20}
+                  className="shrink-0"
+                  aria-hidden
+                  strokeWidth={2}
+                />
               </Link>
             </div>
           </div>
