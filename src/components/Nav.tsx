@@ -91,7 +91,7 @@ export default function Nav() {
 
   return (
     <header className="sticky top-0 z-50 px-4 pt-4">
-      <div className="mx-auto flex w-full max-w-[1280px] items-start justify-between gap-4">
+      <div className="site-container flex items-start justify-between gap-4">
         {/* Left pill — absolute overlay so expansion doesn't push page content */}
         <div className="relative shrink-0">
           <div
@@ -110,7 +110,7 @@ export default function Nav() {
             <div className="flex h-11 items-center gap-4 pl-2 pr-6">
               <button
                 type="button"
-                className="flex size-8 shrink-0 items-center justify-center rounded-full border-[1.5px] border-[#e7e5e4] bg-[#e7e5e4] p-2 transition-colors hover:bg-[#d6d3d1]"
+                className="flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-full border-[1.5px] border-[#e7e5e4] bg-[#e7e5e4] p-2 transition-colors hover:bg-[#d6d3d1]"
                 aria-expanded={open}
                 aria-label={open ? 'Close menu' : 'Open menu'}
                 onClick={() => setOpen((v) => !v)}
@@ -143,7 +143,7 @@ export default function Nav() {
                       to={link.to}
                       onClick={() => setOpen(false)}
                       className={({ isActive }) =>
-                        `rounded-md px-2 py-2 text-sm font-medium transition-colors ${
+                        `cursor-pointer rounded-md px-2 py-2 text-sm font-medium transition-colors ${
                           isActive
                             ? 'bg-[#e7e5e4] text-neutral-900'
                             : 'text-neutral-600 hover:bg-[#eceae8] hover:text-neutral-900'
@@ -164,10 +164,7 @@ export default function Nav() {
           to="/intake"
           className="flex h-11 shrink-0 items-center gap-2 rounded-full bg-white/80 pl-4 pr-2 backdrop-blur-md transition hover:bg-white"
         >
-          <span
-            className="text-base font-bold tracking-[-0.04em] text-[#0c0a09] uppercase"
-            style={{ fontFamily: "'Space Mono', ui-monospace, monospace" }}
-          >
+          <span className="font-mono text-base font-bold tracking-[-0.04em] text-[#0c0a09] uppercase">
             Get Started
           </span>
           <span className="flex size-8 items-center justify-center rounded-full bg-[#ff5500] p-3">

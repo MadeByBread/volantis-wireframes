@@ -53,8 +53,8 @@ export default function SolutionSlider() {
         if (!e.currentTarget.contains(e.relatedTarget)) setPaused(false)
       }}
     >
-      <div className="mx-auto w-full max-w-5xl px-6 py-16">
-        <p className="mb-2 text-xs font-semibold tracking-[0.2em] text-neutral-500 uppercase">
+      <div className="site-container py-16">
+        <p className="font-heading mb-2 text-xs font-semibold tracking-[0.2em] text-neutral-500 uppercase">
           The solution
         </p>
         <h2 className="max-w-3xl text-2xl font-semibold tracking-tight text-neutral-900 sm:text-3xl">

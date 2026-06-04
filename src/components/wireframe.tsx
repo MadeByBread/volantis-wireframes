@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import type { ReactNode } from 'react'
 
 /* ----------------------------------------------------------------------------
-   Wireframe primitives — strictly monochrome, system font.
+   Wireframe primitives — monochrome palette, Zalando Sans + Instrument Sans.
    These are structural building blocks shared across every page.
 ---------------------------------------------------------------------------- */
 
@@ -74,9 +74,9 @@ export function Section({
       id={id}
       className={`border-b border-neutral-200 ${alt ? 'bg-neutral-100' : 'bg-white'} ${className}`}
     >
-      <div className="mx-auto w-full max-w-5xl px-6 py-16">
+      <div className="site-container py-16">
         {eyebrow && (
-          <p className="mb-2 text-xs font-semibold tracking-[0.2em] text-neutral-500 uppercase">
+          <p className="font-heading mb-2 text-xs font-semibold tracking-[0.2em] text-neutral-500 uppercase">
             {eyebrow}
           </p>
         )}
@@ -183,7 +183,7 @@ export function CtaBand({
 }: CtaBandProps) {
   return (
     <section className="bg-neutral-900">
-      <div className="mx-auto w-full max-w-5xl px-6 py-16 text-center">
+      <div className="site-container py-16 text-center">
         <h2 className="mx-auto max-w-2xl text-2xl font-semibold tracking-tight text-white sm:text-3xl">
           {heading}
         </h2>
@@ -227,9 +227,9 @@ export function PageHero({
 }) {
   return (
     <section className="border-b border-neutral-200 bg-white">
-      <div className="mx-auto w-full max-w-5xl px-6 py-20">
+      <div className="site-container py-20">
         {eyebrow && (
-          <p className="mb-3 text-xs font-semibold tracking-[0.2em] text-neutral-500 uppercase">
+          <p className="font-heading mb-3 text-xs font-semibold tracking-[0.2em] text-neutral-500 uppercase">
             {eyebrow}
           </p>
         )}

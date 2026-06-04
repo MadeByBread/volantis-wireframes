@@ -1,97 +1,96 @@
 import { Link } from 'react-router-dom'
+import footerWordmark from '../assets/footer-wordmark.svg'
 
 const columns = [
   {
     title: 'Product',
     links: [
-      { to: '/product', label: 'Volantis A-1' },
+      { to: '/product', label: 'Product' },
       { to: '/technology', label: 'Technology' },
-      { to: '/intake', label: 'Reserve capacity' },
     ],
   },
   {
     title: 'Company',
     links: [
+      { to: '/', label: 'Home' },
       { to: '/about', label: 'About' },
-      { to: '/about#careers', label: 'Careers' },
-      { to: '/faqs', label: 'FAQs' },
     ],
   },
   {
-    title: 'Legal',
+    title: 'Resources',
     links: [
       { to: '/privacy', label: 'Privacy' },
       { to: '/terms', label: 'Terms' },
     ],
   },
-]
+  {
+    title: 'Connect',
+    links: [
+      { href: '#', label: 'LinkedIn' },
+      { href: '#', label: 'X (Twitter)' },
+    ],
+  },
+] as const
 
-const socials = ['X', 'LI', 'GH', 'YT']
+type RouteLink = { to: string; label: string; href?: never }
+type ExternalLink = { href: string; label: string; to?: never }
+
+function FooterLink({ link }: { link: RouteLink | ExternalLink }) {
+  const className =
+    'text-sm font-medium leading-[1.3] text-[#57534e] transition hover:text-[#0c0a09]'
+
+  if ('to' in link && link.to) {
+    return (
+      <Link to={link.to} className={className}>
+        {link.label}
+      </Link>
+    )
+  }
+
+  return (
+    <a href={link.href} className={className}>
+      {link.label}
+    </a>
+  )
+}
 
 export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="bg-neutral-100">
-      <div className="mx-auto w-full max-w-5xl px-6 py-14">
-        <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-4">
-          <div>
-            <div className="text-lg font-semibold tracking-tight text-neutral-900">
-              Volantis
-            </div>
-            <p className="mt-3 max-w-xs text-sm leading-relaxed text-neutral-500">
-              Photonic interconnect for large-model AI inference.
+    <footer className="bg-white">
+      <div className="site-container py-28">
+        <div className="grid grid-cols-2 gap-5 sm:grid-cols-4 lg:grid-cols-7 lg:gap-5">
+          <div className="col-span-2 sm:col-span-4 lg:col-span-1 lg:col-start-1">
+            <p className="text-lg font-medium leading-[1.3] text-[#57534e]">
+              © VOLANTIS {year}
             </p>
-            <div className="mt-4">
-              <p className="text-xs font-medium text-neutral-500">
-                Investor inquiries
-              </p>
-              <a
-                href="mailto:investors@volantis.example"
-                className="text-sm text-neutral-700 underline-offset-4 hover:underline"
-              >
-                investors@volantis.example
-              </a>
-            </div>
           </div>
 
+          <div className="hidden lg:col-span-2 lg:block" aria-hidden="true" />
+
           {columns.map((col) => (
-            <div key={col.title}>
-              <h3 className="text-xs font-semibold tracking-[0.2em] text-neutral-500 uppercase">
+            <div key={col.title} className="flex flex-col gap-6 lg:col-span-1">
+              <h3 className="text-sm font-bold uppercase leading-none text-[#0c0a09]">
                 {col.title}
               </h3>
-              <ul className="mt-4 space-y-2">
+              <div className="flex flex-col gap-2">
                 {col.links.map((link) => (
-                  <li key={link.label}>
-                    <Link
-                      to={link.to}
-                      className="text-sm text-neutral-600 transition hover:text-neutral-900"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
+                  <FooterLink key={link.label} link={link} />
                 ))}
-              </ul>
+              </div>
             </div>
           ))}
         </div>
+      </div>
 
-        <div className="mt-12 flex flex-col items-start justify-between gap-4 border-t border-neutral-200 pt-6 sm:flex-row sm:items-center">
-          <p className="text-sm text-neutral-500">
-            &copy; {year} Volantis. All rights reserved.
-          </p>
-          <div className="flex items-center gap-3">
-            {socials.map((s) => (
-              <span
-                key={s}
-                aria-label={`Social link ${s}`}
-                className="flex h-8 w-8 items-center justify-center rounded-full border border-neutral-300 bg-neutral-200 text-[10px] font-semibold text-neutral-500"
-              >
-                {s}
-              </span>
-            ))}
-          </div>
-        </div>
+      {/* Wordmark: full viewport width, capped at 1640px */}
+      <div className="mx-auto w-full max-w-[1640px]">
+        <img
+          src={footerWordmark}
+          alt=""
+          className="block aspect-[1320/195] w-full object-cover object-left"
+        />
       </div>
     </footer>
   )
