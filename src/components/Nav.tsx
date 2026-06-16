@@ -120,7 +120,7 @@ export default function Nav() {
           className="flex h-11 shrink-0 items-center gap-2 rounded-full bg-white/80 pl-4 pr-2 backdrop-blur-md transition hover:bg-white"
         >
           <span className="font-mono text-base font-bold tracking-[-0.04em] text-[#0c0a09] uppercase">
-            Get Started
+            Get in Touch
           </span>
           <span className="flex size-8 items-center justify-center rounded-full bg-[#ff5500]">
             <ArrowRightIcon
