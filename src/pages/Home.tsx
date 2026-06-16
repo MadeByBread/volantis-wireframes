@@ -70,8 +70,8 @@ export default function Home() {
       {/* 3. The problem (wedge) */}
       <Section
         eyebrow="The problem"
-        heading="The bottleneck in AI is moving information, not processing it."
-        intro="Model size has grown 10,000x while GPU memory has grown only ~17x. Electrical wires only reach ~2mm, which caps the memory you can put next to a chip."
+        heading="AI is limited by memory, not compute."
+        intro="Electrical wires only reach ~2mm, capping the fast memory you can put next to a chip."
       />
 
       {/* 4. The solution */}
