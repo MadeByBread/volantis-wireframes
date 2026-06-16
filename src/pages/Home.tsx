@@ -17,16 +17,17 @@ export default function Home() {
         <div className="site-container">
           <div className="pt-6 text-center">
             <h1 className="mx-auto max-w-[960px] text-[clamp(2.75rem,10vw,7rem)] font-normal leading-[0.9] tracking-tight text-[#0c0a09]">
-              Bountiful memory for large models
+              More memory, more bandwidth, at the speed of light.
             </h1>
           </div>
 
           <div className="flex flex-col gap-10 pt-16 pb-24 lg:flex-row lg:items-end lg:gap-10">
             <div className="w-full max-w-[280px] shrink-0 pb-6 text-lg leading-[1.3] font-medium text-[#57534e]">
-              <p>Models grew 10,000&times;. GPU memory grew 17&times;.</p>
+              <p>Near-SRAM Bandwidth, but with Rack-Scale Memory Capacity</p>
               <p className="mt-4">
-                We move data with light instead of copper, so you can pack
-                100&times; more memory into an inference system.
+                We replace copper interposers with tiny optical waveguides on
+                giant substrates, enabling &gt;30X more memory bandwidth and
+                &gt;50X larger memory pools.
               </p>
             </div>
 
@@ -93,14 +94,6 @@ export default function Home() {
           </a>
         </div>
       </Section>
-
-      {/* 6. Who it's for */}
-      <Section
-        alt
-        eyebrow="Who it's for"
-        heading="Built for NeoCloud providers serving large MoEs."
-        intro="If you run large MoEs for customers, you already pay for latency twice: once in GPUs and once in user churn. We built this for that problem — capacity, economics, and deployment."
-      />
 
       {/* 7. Closing CTA band */}
       <CtaBand
