@@ -60,8 +60,9 @@ export default function Home() {
       {/* 2. Proof bar */}
       <Section alt>
         <p className="mb-6 text-center text-sm text-neutral-600">
-          Backed by Sam Altman and Alex Wang. Built by alumni of Micron HBM,
-          Intel, Broadcom, AMD, Qualcomm, Groq, MIT and Ayar Labs.
+          Backed by Sam Altman, Dylan Patel, Jeff Dean and others. Built by
+          people who pioneered new product categories like co-packaged optics,
+          HBM, and more from Micron, Ayar Labs, Broadcom, AMD, Groq and more.
         </p>
         <LogoStrip count={7} />
       </Section>
