@@ -16,7 +16,7 @@ export default function Home() {
       <section className="border-b border-neutral-200 bg-white">
         <div className="site-container">
           <div className="pt-6 text-center">
-            <h1 className="mx-auto max-w-[960px] text-[clamp(2.75rem,10vw,7rem)] font-normal leading-[0.9] tracking-tight text-[#0c0a09]">
+            <h1 className="mx-auto max-w-[980px] text-[clamp(2.75rem,10vw,7rem)] font-normal leading-[0.9] tracking-tight text-[#0c0a09]">
               More memory. More bandwidth. <br /> At the speed of light.
             </h1>
           </div>
