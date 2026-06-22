@@ -1,12 +1,13 @@
 import { ArrowRight as ArrowRightIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 import BenchmarkChart from "../components/BenchmarkChart";
-import SolutionSlider from "../components/SolutionSlider";
+import MemoryReachSection from "../components/MemoryReachSection";
 import {
   CtaBand,
   LogoStrip,
   Placeholder,
   Section,
+  StatCard,
 } from "../components/wireframe";
 
 export default function Home() {
@@ -16,8 +17,9 @@ export default function Home() {
       <section className="border-b border-neutral-200 bg-white">
         <div className="site-container">
           <div className="pt-6 text-center">
-            <h1 className="mx-auto max-w-[980px] text-[clamp(2.75rem,10vw,7rem)] font-normal leading-[0.9] tracking-tight text-[#0c0a09]">
-              More memory. More bandwidth. <br /> At the speed of light.
+            <h1 className="mx-auto max-w-[980px] text-[clamp(2.5rem,9vw,6.25rem)] font-normal leading-[0.9] tracking-tight text-[#0c0a09]">
+              More memory. <br /> More bandwidth. <br />{" "}
+              <span className="whitespace-nowrap">At the speed of light.</span>
             </h1>
           </div>
 
@@ -75,14 +77,23 @@ export default function Home() {
       />
 
       {/* 4. The solution */}
-      <SolutionSlider />
+      <MemoryReachSection />
 
       {/* 5. Performance snapshot */}
       <Section
         eyebrow="Performance"
-        heading="DeepSeek-V3.2: 1,590 tokens/sec/user on Volantis. ~50 on the fastest GPU."
+        heading="Run >Trillion Parameter Models at Less than 1 ms/token"
+        intro="DeepSeek-V3.2: 1,590 tokens/sec/user on Volantis. ~50 on the fastest GPU."
       >
-        <BenchmarkChart />
+        <div className="grid gap-4 sm:grid-cols-3">
+          <StatCard
+            stat=">30x"
+            label="Lower latency for 1T+ models at scale"
+          />
+          <StatCard stat="15x" label="Tok/$ better serving economics" />
+          <StatCard stat="6x" label="Tok/W energy efficiency" />
+        </div>
+        <BenchmarkChart className="mt-10" />
         <p className="mt-4 text-xs text-neutral-500">
           Method: in/out = 1024/1024, batch size 32, fp8, simulated.
         </p>
