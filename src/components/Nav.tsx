@@ -32,7 +32,7 @@ export default function Nav() {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-50 px-4 pt-4">
+    <header className="sticky top-0 z-50 pt-4">
       <div className="site-container flex items-start justify-between gap-4">
         {/* Left pill — absolute overlay so expansion doesn't push page content */}
         <div className="relative shrink-0">
