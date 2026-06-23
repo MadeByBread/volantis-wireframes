@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import Product from './pages/Product'
 import Technology from './pages/Technology'
 import About from './pages/About'
+import Careers from './pages/Careers'
 import Faqs from './pages/Faqs'
 import Privacy from './pages/Privacy'
 import Terms from './pages/Terms'
@@ -17,6 +18,7 @@ function App() {
         <Route path="/product" element={<Product />} />
         <Route path="/technology" element={<Technology />} />
         <Route path="/about" element={<About />} />
+        <Route path="/careers" element={<Careers />} />
         <Route path="/faqs" element={<Faqs />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />

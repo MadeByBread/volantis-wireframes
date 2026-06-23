@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import {
   PageHero,
   Section,
@@ -46,13 +47,6 @@ const backers = [
   { name: 'Trevor Blackwell', company: 'Y Combinator', role: 'Co-founder' },
 ]
 
-const openRoles = [
-  'Photonics Process Engineer',
-  'Packaging Engineer',
-  'Systems / Architecture Engineer',
-  'Inference Software Engineer',
-]
-
 export default function About() {
   return (
     <>
@@ -97,34 +91,26 @@ export default function About() {
         </div>
       </Section>
 
-      {/* Careers */}
-      <Section id="careers" eyebrow="Careers" heading="Open roles">
+      {/* Careers teaser — full listing lives on /careers */}
+      <Section id="careers" eyebrow="Careers" heading="Come build with us.">
         <p className="max-w-2xl text-base leading-relaxed text-neutral-600">
           If you want to work on photonics, packaging, and systems that change AI
-          economics, this is the job.
+          economics, this is the job. Our open roles and hiring process live on
+          the careers page.
         </p>
-        <ul className="mt-6 divide-y divide-neutral-200 overflow-hidden rounded-lg border border-neutral-300 bg-white">
-          {openRoles.map((role) => (
-            <li
-              key={role}
-              className="flex items-center justify-between px-5 py-4"
-            >
-              <span className="text-sm font-medium text-neutral-900">
-                {role}
-              </span>
-              <span className="text-sm text-neutral-500 underline-offset-4 hover:underline">
-                View role &rarr;
-              </span>
-            </li>
-          ))}
-        </ul>
+        <Link
+          to="/careers"
+          className="mt-6 inline-flex text-sm font-medium text-neutral-900 underline-offset-4 hover:underline"
+        >
+          See open roles &rarr;
+        </Link>
       </Section>
 
       {/* CTA band */}
       <CtaBand
         heading="Join us in building something foundational."
         primaryLabel="See open roles"
-        primaryTo="/about#careers"
+        primaryTo="/careers"
       />
     </>
   )
