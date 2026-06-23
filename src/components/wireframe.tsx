@@ -163,6 +163,42 @@ export function BioCard({ name, role, bio }: BioCardProps) {
   )
 }
 
+type BackerProps = {
+  name: string
+  company: string
+  role: string
+  /** Featured backers render larger, with a stronger frame. */
+  featured?: boolean
+}
+
+/** Investor / backer card with photo placeholder, name, company and role. */
+export function BackerCard({ name, company, role, featured = false }: BackerProps) {
+  return (
+    <div
+      className={`flex flex-col rounded-lg border bg-white ${
+        featured
+          ? 'border-neutral-900 p-6'
+          : 'border-neutral-300 p-5'
+      }`}
+    >
+      <Placeholder
+        label="Photo"
+        height={featured ? 'h-28' : 'h-20'}
+        className="w-full"
+      />
+      <h3
+        className={`mt-4 font-semibold text-neutral-900 ${
+          featured ? 'text-lg' : 'text-base'
+        }`}
+      >
+        {name}
+      </h3>
+      <p className="text-sm font-medium text-neutral-700">{company}</p>
+      <p className="text-sm text-neutral-500">{role}</p>
+    </div>
+  )
+}
+
 type CtaBandProps = {
   heading: string
   body?: string

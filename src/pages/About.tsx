@@ -2,6 +2,7 @@ import {
   PageHero,
   Section,
   BioCard,
+  BackerCard,
   LogoStrip,
   CtaBand,
 } from '../components/wireframe'
@@ -29,6 +30,22 @@ const leadership = [
   },
 ]
 
+const featuredBackers = [
+  { name: 'Sam Altman', company: 'OpenAI', role: 'CEO' },
+  { name: 'Jeff Dean', company: 'Google', role: 'Chief Scientist' },
+  { name: 'Dylan Patel', company: 'SemiAnalysis', role: 'Founder' },
+]
+
+const backers = [
+  { name: 'Lachy Groom', company: 'Pi', role: 'Co-founder' },
+  { name: 'Alex Wang', company: 'Meta', role: 'Chief AI Officer' },
+  { name: 'Logan Kilpatrick', company: 'Google', role: 'Product Lead' },
+  { name: 'Naval Ravikant', company: 'AngelList', role: 'Founder' },
+  { name: 'Thomas Wolf', company: 'Hugging Face', role: 'Co-founder' },
+  { name: 'Arash Ferdowsi', company: 'Dropbox', role: 'Co-founder' },
+  { name: 'Trevor Blackwell', company: 'Y Combinator', role: 'Co-founder' },
+]
+
 const openRoles = [
   'Photonics Process Engineer',
   'Packaging Engineer',
@@ -41,20 +58,12 @@ export default function About() {
     <>
       <PageHero
         eyebrow="About"
-        title="The team that pioneered HBM & CPO is rebuilding the accelerator."
-        subhead="Our team has shipped HBM and co-packaged optics. We are putting photonics inside the accelerator, where memory traffic actually lives."
+        title="The team that pioneered HBM & CPO is demolishing the memory wall."
+        subhead="Our team previously shipped products like HBM and co-packaged optics. Volantis is a scalable solution to the memory bottleneck, enabling more than an order-of-magnitude increase in capacity and bandwidth, with a roadmap that scales."
       />
 
-      {/* 2. Why us / credibility */}
-      <Section
-        alt
-        eyebrow="Why us"
-        heading="15 idea-to-silicon tapeouts. Hardware that ships. A mission that matters."
-        intro="We've pioneered game-changing products like HBM and CPO. The memory wall is a packaging problem — and we treat it like one."
-      />
-
-      {/* 3. Leadership bios */}
-      <Section eyebrow="Leadership" heading="Leadership team">
+      {/* Leadership bios */}
+      <Section alt eyebrow="Leadership" heading="Leadership team">
         <div className="grid gap-5 md:grid-cols-2">
           {leadership.map((p) => (
             <BioCard key={p.name} {...p} />
@@ -62,31 +71,33 @@ export default function About() {
         </div>
       </Section>
 
-      {/* 4. Rest of the team */}
+      {/* Rest of the team */}
       <Section
-        alt
         eyebrow="The team"
-        heading="Team from AMD, Intel, Qualcomm, Groq, Broadcom, Lightmatter, MIT and Ayar Labs."
+        heading="Leaders from Ayar Labs, Micron, Broadcom, Marvell, AMD, Lightmatter, and Groq who have worked on the most important chips of the last decade."
       >
-        <LogoStrip count={8} />
+        <LogoStrip count={7} />
       </Section>
 
-      {/* 5. Backers */}
-      <Section eyebrow="Backers" heading="Backed by Sam Altman and Alex Wang.">
-        <LogoStrip count={2} />
-      </Section>
-
-      {/* 6. Traction */}
+      {/* Backers */}
       <Section
         alt
-        eyebrow="Traction"
-        heading="NeoCloud customer momentum"
-        intro="Customer references and anonymized segments available under NDA. (Wireframe placeholder — populate with publishable logos, quotes, or customer count.)"
+        eyebrow="Backers"
+        heading="Backed by leaders with deep expertise in AI & semiconductors."
       >
-        <LogoStrip count={5} />
+        <div className="grid gap-5 sm:grid-cols-2 md:grid-cols-3">
+          {featuredBackers.map((b) => (
+            <BackerCard key={b.name} {...b} featured />
+          ))}
+        </div>
+        <div className="mt-5 grid gap-4 sm:grid-cols-2 md:grid-cols-4">
+          {backers.map((b) => (
+            <BackerCard key={b.name} {...b} />
+          ))}
+        </div>
       </Section>
 
-      {/* 7. Careers */}
+      {/* Careers */}
       <Section id="careers" eyebrow="Careers" heading="Open roles">
         <p className="max-w-2xl text-base leading-relaxed text-neutral-600">
           If you want to work on photonics, packaging, and systems that change AI
@@ -109,21 +120,11 @@ export default function About() {
         </ul>
       </Section>
 
-      {/* 8. Press */}
-      <Section alt eyebrow="Press" heading="In the news">
-        <LogoStrip count={4} />
-        <p className="mt-6 text-sm text-neutral-500">
-          Coverage placeholder — populate with real press or remove this section.
-        </p>
-      </Section>
-
-      {/* 9. CTA band */}
+      {/* CTA band */}
       <CtaBand
-        heading="Build the system, not just the parts."
+        heading="Join us in building something foundational."
         primaryLabel="See open roles"
         primaryTo="/about#careers"
-        secondaryLabel="Investor inquiries"
-        secondaryTo="/intake"
       />
     </>
   )

@@ -1,12 +1,5 @@
 import { FaqList } from '../components/FaqList'
-import {
-  PageHero,
-  Section,
-  StatCard,
-  Placeholder,
-  CtaBand,
-  CtaPair,
-} from '../components/wireframe'
+import { PageHero, Section, StatCard, Placeholder, CtaBand } from '../components/wireframe'
 import { technologyFaqs } from '../data/faqs'
 
 const pillars = [
@@ -24,95 +17,178 @@ const pillars = [
   },
 ]
 
+/** Electrical reach: a chip on an interposer ringed by memory chiplets. */
+function ElectricalReachDiagram() {
+  return (
+    <figure
+      className="overflow-hidden rounded-xl bg-neutral-900 p-8 sm:p-12"
+      aria-label="A chip on an interposer surrounded by memory chiplets within electrical reach"
+    >
+      <div className="mx-auto grid max-w-[320px] grid-cols-5 grid-rows-5 gap-2 rounded-3xl bg-[#ff5500] p-3">
+        {Array.from({ length: 25 }).map((_, i) => {
+          const row = Math.floor(i / 5)
+          const col = i % 5
+          const isEdge = row === 0 || row === 4 || col === 0 || col === 4
+          const isCenter = row === 2 && col === 2
+          if (isCenter) {
+            return (
+              <div
+                key={i}
+                className="col-start-2 col-end-5 row-start-2 row-end-5 flex items-center justify-center rounded-lg bg-[#3a3f55] text-xs font-semibold text-white"
+              >
+                Chip
+              </div>
+            )
+          }
+          if (isEdge) {
+            return <div key={i} className="aspect-square rounded-sm bg-[#9a3412]" />
+          }
+          return <div key={i} aria-hidden />
+        })}
+      </div>
+      <figcaption className="mt-6 text-center text-sm text-neutral-400">
+        Electrical reach: ~2–5mm — memory chiplets must crowd the chip edge
+      </figcaption>
+    </figure>
+  )
+}
+
+/** Optical reach: small electrical reach vs a large Volantis optical reach pool. */
+function OpticalReachDiagram() {
+  return (
+    <figure
+      className="overflow-hidden rounded-xl bg-neutral-900 p-8 sm:p-12"
+      aria-label="Comparison of small electrical interconnect reach versus large Volantis optical reach"
+    >
+      <div className="flex flex-wrap items-end justify-center gap-10 sm:gap-16">
+        {/* Electrical reach */}
+        <div className="flex flex-col items-center">
+          <div className="relative flex h-24 w-24 items-center justify-center rounded-md border-2 border-[#ff5500]/60 bg-[#ff5500]/15">
+            <div className="flex h-9 w-9 items-center justify-center rounded bg-[#ff5500] text-[9px] font-semibold uppercase text-white">
+              Chip
+            </div>
+          </div>
+          <figcaption className="mt-3 text-center text-xs text-neutral-400">
+            Electrical reach
+          </figcaption>
+        </div>
+
+        {/* Optical reach */}
+        <div className="flex flex-col items-center">
+          <div
+            className="relative flex h-56 w-56 items-center justify-center rounded-lg border border-cyan-400/40 sm:h-64 sm:w-64"
+            style={{
+              backgroundImage: `
+                linear-gradient(to right, rgba(34, 211, 238, 0.18) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(34, 211, 238, 0.18) 1px, transparent 1px)
+              `,
+              backgroundSize: '16px 16px',
+            }}
+          >
+            <div className="flex h-9 w-9 items-center justify-center rounded bg-[#ff5500] text-[9px] font-semibold uppercase text-white">
+              Chip
+            </div>
+          </div>
+          <figcaption className="mt-3 text-center text-xs text-neutral-400">
+            Volantis optical reach — 200mm+
+          </figcaption>
+        </div>
+      </div>
+
+      <div className="mt-8 flex flex-wrap items-center justify-center gap-6 border-t border-neutral-700 pt-6">
+        <div className="flex items-center gap-2">
+          <span className="h-3 w-3 rounded-sm bg-[#ff5500]" aria-hidden />
+          <span className="text-xs text-neutral-400">Electrical interconnect reach</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <span
+            className="h-3 w-3 rounded-sm border border-cyan-400/50 bg-cyan-400/20"
+            aria-hidden
+          />
+          <span className="text-xs text-neutral-400">Volantis optical reach</span>
+        </div>
+      </div>
+    </figure>
+  )
+}
+
 export default function Technology() {
   return (
     <>
       <PageHero
         eyebrow="Technology"
         title={'We build "optical wires," not "optical cables."'}
-        subhead="Electrical wires stop at about 2 millimeters. Light does not. We use that reach to move memory traffic where copper fails — photonics belongs inside the accelerator, not just between GPUs."
-      >
-        <CtaPair
-          primaryLabel="Request the technical brief"
-          primaryTo="/intake"
-          secondaryLabel="Talk to an engineer"
-          secondaryTo="/intake"
-        />
-      </PageHero>
+        subhead={
+          <>
+            Electrical wires on an interposer travel about 2 millimeters. Our optical
+            waveguides on an interposer travel 200mm+. That breaks the shoreline limit of
+            traditional HBM-based systems, letting us aggregate many memory chiplets into a
+            single, ultra-high-bandwidth memory pool.
+          </>
+        }
+      />
 
-      {/* 2. Why this is needed (physics) */}
+      {/* 2. The electrical reach limit */}
       <Section
         alt
-        eyebrow="The physics"
-        heading="Why electrical wires cap memory"
-        intro="Electrical wires reach ~2mm — about one HBM column — which sets a hard memory ceiling. A faster NVLink is a band-aid: >1µs latency, ~10x lower bandwidth than on-chip, and the compute-to-memory ratio stays fixed. Today's photonics connects between GPUs, not inside one."
+        eyebrow="The problem"
+        heading="The electrical reach limit"
+        intro="Electrical wires travel ~2–5mm, less than the ~11mm length of an HBM stack. This limits existing chips to a small amount of memory and bandwidth."
       >
-        <div className="grid gap-5 sm:grid-cols-2">
-          <StatCard stat="~2mm" label="electrical interconnect reach" />
-          <StatCard stat="10,000x" label="model growth since 2016 vs ~17x GPU memory" />
-        </div>
+        <ElectricalReachDiagram />
       </Section>
 
-      {/* 3. Reach advantage */}
+      {/* 3. The optical reach advantage */}
       <Section
         eyebrow="The reach advantage"
-        heading="100x optical reach vs electrical interconnect"
-        intro="Optical reach is ~100x further than electrical interconnect. That is the core unlock for packing ~100x more memory next to a chip."
+        heading="Our optical wires travel 200mm+"
+        intro="Breaking the shoreline limit that caps HBM capacity and bandwidth, over 220 memory chiplets can be connected in a single, uniform-latency memory pool. This enables gigantic capacities while simultaneously running at ultra-high bandwidth."
       >
-        <Placeholder label="Photonic wires that go 100x further" height="h-56" />
+        <OpticalReachDiagram />
       </Section>
 
-      {/* 4. How the Photonic Motherboard works (3 pillars) */}
+      {/* 4. Breaking the capacity/bandwidth tradeoff */}
       <Section
         alt
-        eyebrow="Architecture"
-        heading="How the Photonic Motherboard works"
+        eyebrow="The unlock"
+        heading="We break the tradeoff between memory bandwidth and memory capacity — enabling multi-trillion parameter models at low latencies."
       >
-        <div className="grid gap-5 md:grid-cols-3">
+        <div className="grid gap-5 sm:grid-cols-3">
+          <StatCard stat="50x" label="bigger capacity vs a GPU baseline" />
+          <StatCard stat="30x" label="faster" />
+          <StatCard stat="250x" label="bigger than emerging technologies (e.g. 3D DRAM)" />
+        </div>
+        <Placeholder
+          label="Capacity vs bandwidth — GPU baseline vs Volantis (incl. emerging tech, e.g. 3D DRAM)"
+          height="h-80"
+          className="mt-6"
+        />
+      </Section>
+
+      {/* 5. A practical photonic platform */}
+      <Section
+        eyebrow="The platform"
+        heading="A practical photonic platform"
+        intro="No external lasers. Thermally stable at >95°C. Sub-1 pJ/bit."
+      >
+        <Placeholder
+          label="Photonic platform render — integrated waveguides, VCSEL arrays, waveguide interposer"
+          height="h-72"
+        />
+        <div className="mt-6 grid gap-5 md:grid-cols-3">
           {pillars.map((p) => (
             <div
               key={p.title}
               className="rounded-lg border border-neutral-300 bg-white p-6"
             >
-              <h3 className="text-base font-semibold text-neutral-900">
-                {p.title}
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-neutral-600">
-                {p.body}
-              </p>
+              <h3 className="text-base font-semibold text-neutral-900">{p.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-neutral-600">{p.body}</p>
             </div>
           ))}
         </div>
-        <Placeholder label="Photonic motherboard stack diagram" height="h-64" className="mt-6" />
       </Section>
 
-      {/* 5. Why fully integrated beats alternatives */}
-      <Section
-        eyebrow="Differentiation"
-        heading={'Why "fully integrated" beats the alternatives'}
-        intro="Traditional silicon-photonics interposers require ~5,000 external laser modules. Fully integrated photonics reaches 240 TB/s and eliminates the external-laser problem entirely."
-      >
-        <Placeholder label="Integrated vs traditional silicon-photonics comparison" height="h-56" />
-      </Section>
-
-      {/* 6. Bandwidth positioning */}
-      <Section
-        alt
-        eyebrow="Bandwidth"
-        heading="60 TB/s per die — ~30x the CPO field"
-        intro="Versus ~1–2 TB/s/die for the rest of the CPO field, and well above the 4–8 TB/s memory requirement."
-      >
-        <Placeholder label="Bandwidth vs distance chart" height="h-72" />
-      </Section>
-
-      {/* 7. De-risking / manufacturability */}
-      <Section
-        eyebrow="De-risking"
-        heading="We ship on proven compute chiplets."
-        intro="The first product leverages existing external compute chiplets, so the risk lives in the interconnect — the part we changed. 15 idea-to-silicon tapeouts back the team's ability to execute."
-      />
-
-      {/* 8. FAQs */}
+      {/* 6. FAQs */}
       <Section
         alt
         eyebrow="FAQs"
@@ -122,7 +198,7 @@ export default function Technology() {
         <FaqList items={technologyFaqs} showAllLink />
       </Section>
 
-      {/* 9. CTA */}
+      {/* 8. CTA */}
       <CtaBand
         heading="If you want to verify the claims, start with the datasheet."
         body="We include the test setup so you can check the numbers yourself."

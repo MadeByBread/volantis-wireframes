@@ -82,7 +82,7 @@ export default function Home() {
       {/* 5. Performance snapshot */}
       <Section
         eyebrow="Performance"
-        heading="Run >Trillion Parameter Models at Less than 1 ms/token"
+        heading="Run multi-trillion parameter models at SRAM-system latencies."
         intro="DeepSeek-V3.2: 1,590 tokens/sec/user on Volantis. ~50 on the fastest GPU."
       >
         <div className="grid gap-4 sm:grid-cols-3">

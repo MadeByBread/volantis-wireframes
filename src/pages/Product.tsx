@@ -1,25 +1,20 @@
 import { Link } from 'react-router-dom'
-import { FaqList } from '../components/FaqList'
 import {
   PageHero,
   Section,
   StatCard,
   SpecTable,
   Placeholder,
-  LogoStrip,
   CtaBand,
   CtaPair,
 } from '../components/wireframe'
-import { productFaqs } from '../data/faqs'
 
 const specs = [
-  { label: 'Memory capacity', value: 'Up to 24 TB' },
-  { label: 'Scale', value: 'Up to 400 nodes' },
-  { label: 'Bandwidth', value: '60 TB/s per die' },
-  { label: 'Precision', value: 'fp8' },
-  { label: 'Interconnect', value: 'Integrated photonic wires' },
-  { label: 'Power envelope', value: '6x Tok/W vs NVIDIA B200' },
-  { label: 'Form factor', value: 'Array of photonic motherboards' },
+  { label: 'Memory capacity', value: '10 TB' },
+  { label: 'Memory bandwidth', value: '240 TB/s' },
+  { label: 'Power envelope', value: '20kW' },
+  { label: 'Off-wafer IO bandwidth', value: '10 TB/s' },
+  { label: 'Form factor', value: '24U' },
 ]
 
 export default function Product() {
@@ -55,22 +50,37 @@ export default function Product() {
         </div>
       </Section>
 
-      {/* 3. What's in the box */}
+      {/* 3. System overview */}
       <Section
         eyebrow="System overview"
-        heading="What's in the box"
-        intro="The Volantis box is an array of photonic motherboards. We pair proven compute chiplets with an optical fabric that carries memory traffic at 60 TB/s per die — a de-risked first product."
+        heading="The Fastest Frontier AI Inference System"
+        intro="Our A-1 product takes proven compute IP and integrates it with our proprietary photonics to produce an integrated system that fits into existing datacenter racks."
       >
-        <Placeholder label="Volantis box / photonic motherboard" height="h-72" />
+        <Placeholder
+          label="Exploded view — photonic motherboard stack"
+          height="h-72"
+        />
       </Section>
 
-      {/* 4. Specifications table */}
-      <Section alt eyebrow="Specifications" heading="Spec sheet">
+      {/* 4. De-risking */}
+      <Section
+        alt
+        eyebrow="De-risking"
+        heading="We ship on proven compute IP."
+        intro="The first product leverages existing and silicon-proven compute engine IP licensed from external parties. The risk lives in the photonic interconnect — which we've developed for 4+ years."
+      />
+
+      {/* 5. Specifications table */}
+      <Section eyebrow="Specifications" heading="Spec sheet">
         <SpecTable rows={specs} />
       </Section>
 
-      {/* 5. Performance & benchmarks */}
-      <Section eyebrow="Performance" heading="Benchmarks">
+      {/* 6. Performance & benchmarks */}
+      <Section
+        alt
+        eyebrow="Performance"
+        heading="Run multi-trillion parameter models at SRAM-system latencies."
+      >
         <div className="grid gap-5 sm:grid-cols-2">
           <div className="rounded-lg border border-neutral-300 bg-white p-6">
             <p className="text-sm font-medium text-neutral-500">DeepSeek-V3.2</p>
@@ -102,57 +112,14 @@ export default function Product() {
         </p>
       </Section>
 
-      {/* 6. Economics */}
+      {/* 7. Economics */}
       <Section
-        alt
         eyebrow="Economics"
         heading="Why 15x Tok/$ and 6x Tok/W change your unit economics."
         intro="Cost per token falls when latency falls. You stop buying idle GPU time. Lower power-per-rack and higher density compound the savings across a fleet."
       />
 
-      {/* 7. Access & deployment */}
-      <Section eyebrow="Access & deployment" heading="Two ways to deploy">
-        <div className="grid gap-5 sm:grid-cols-2">
-          <div className="rounded-lg border border-neutral-300 bg-white p-6">
-            <h3 className="text-base font-semibold text-neutral-900">
-              On-prem hardware
-            </h3>
-            <p className="mt-2 text-sm leading-relaxed text-neutral-600">
-              Purchase Volantis boxes for your own datacenter. Includes
-              integration notes, lead times, and support.
-            </p>
-          </div>
-          <div className="rounded-lg border border-neutral-300 bg-white p-6">
-            <h3 className="text-base font-semibold text-neutral-900">
-              Cloud API access
-            </h3>
-            <p className="mt-2 text-sm leading-relaxed text-neutral-600">
-              Serve large models through the Volantis API without managing
-              hardware.
-            </p>
-          </div>
-        </div>
-      </Section>
-
-      {/* 8. Proof / commitments */}
-      <Section alt eyebrow="Proof" heading="Backed and in demand">
-        <LogoStrip count={6} />
-        <p className="mt-6 text-sm text-neutral-600">
-          Backed by Sam Altman and Alex Wang. Customer references available under
-          NDA.
-        </p>
-      </Section>
-
-      {/* 9. FAQs */}
-      <Section
-        eyebrow="FAQs"
-        heading="Product questions"
-        intro="Quick answers on specs, economics, and deployment. For the full list, see our FAQs page."
-      >
-        <FaqList items={productFaqs} showAllLink />
-      </Section>
-
-      {/* 10. Conversion band */}
+      {/* 8. Conversion band */}
       <CtaBand
         heading="Tell us your workload. We'll map it to nodes, memory, and delivery windows."
         primaryLabel="Reserve capacity"

@@ -13,27 +13,28 @@
 **Section outline**
 
 1. **Hero / mission**
-    - Keep the strong line: "15 idea-to-silicon tapeouts. A mission to revolutionize computing." Tighten it.
-2. **Why us (credibility headline)**
-    - The deck's framing — "We've pioneered game-changing products like HBM & CPO" — is stronger than the current "What's more impressive than photonic chip communication? The people behind it." Lead with the pedigree.
-3. **Leadership bios** *(clean, consistent template per person)*
+    - **H1:** "The team that pioneered HBM & CPO is demolishing the memory wall." (replaces "rebuilding the accelerator").
+    - **Subhead:** "Our team previously shipped products like HBM and co-packaged optics. Volantis is a scalable solution to the memory bottleneck, enabling more than an order-of-magnitude increase in capacity and bandwidth, with a roadmap that scales."
+2. **Leadership team** *(moved up — lands right after the hero)*
+    - Clean, consistent template per person.
     - **Tapa Ghosh** — Founder & CEO. Thiel Fellow, YC W18; 3 photonic chip tapeouts.
     - **Roy Meade** — Co-founder & CTO. Led Micron HBM; VP/1st hire at Ayar Labs; **120+ patents**; DARPA POEM PI.
     - **Beth Keser, Ph.D.** — VP of Packaging. Ex-Intel/Qualcomm; IEEE Fellow; 50+ patents; fan-out WLP pioneer.
     - **Partha Kundu** — Chief Architect. Ex-Broadcom/OCI/Cray/Intel; architect on a #1 supercomputer fabric; 27 patents.
     - *Fix: remove the duplicated Tapa bio block currently on the page; standardize bio length (Meade's is ~5× longer than the others).*
-4. **Rest of the team**
-    - "Team from AMD, Intel, Qualcomm, Groq, Broadcom, Lightmatter, MIT, Ayar Labs." Logo strip.
-5. **Backers**
-    - Sam Altman, Alex Wang. Keep this — it's strong.
-6. **Traction (new)**
-    - NeoCloud customer momentum. If publishable: customer logos/quotes, anonymized segments, or customer count (avoid publishing POs).
-7. **Careers**
+3. **Rest of the team**
+    - Title: "Leaders from Ayar Labs, Micron, Broadcom, Marvell, AMD, Lightmatter, and Groq who have worked on the most important chips of the last decade." Logo strip.
+4. **Backers**
+    - Title: "Backed by leaders with deep expertise in AI & semiconductors."
+    - Full list (name · company · role): Sam Altman (OpenAI, CEO), Lachy Groom (π, Co-founder), Jeff Dean (Google, Chief Scientist), Alex Wang (Meta, Chief AI Officer), Logan Kilpatrick (Google, Product Lead), Dylan Patel (SemiAnalysis, Founder), Naval Ravikant (AngelList, Founder), Thomas Wolf (Hugging Face, Co-founder), Arash Ferdowsi (Dropbox, Co-founder), Trevor Blackwell (Y Combinator, Co-founder).
+    - **Emphasize most:** Sam Altman, Jeff Dean, Dylan Patel — surface as featured cards above the rest.
+5. **Careers**
     - Replace the vague "Join Us" mailto with a real **open roles** section or link to a jobs page. This is the page recruits land on.
-8. **Press**
-    - Either populate with real coverage or **remove the "Coming Soon" placeholders** — empty placeholders read worse than no section.
-9. **CTA band**
-    - Primary: See open roles. Secondary: Investor inquiries.
+6. **CTA band**
+    - Heading: "Join us in building something foundational."
+    - Primary: See open roles. (Secondary "Investor inquiries" removed.)
+
+*(Removed for now: the "Why us / 15 idea-to-silicon tapeouts" credibility section — revisit later; the **Traction** block — we can't publicly disclose customers yet; the **Press** block — no coverage to show yet.)*
 
 ### Draft copy examples (on-voice)
 
@@ -57,7 +58,10 @@
 
 **▲ Changes vs current site**
 
-- Leads with the HBM/CPO pedigree headline from the deck instead of the softer current hero.
-- Standardizes bios into a consistent template; removes the duplicated Tapa block.
-- Replaces "Coming Soon" press placeholders and the bare "Join Us" email with real careers + (real or removed) press.
-- Adds a traction/POs proof block.
+- New hero line: "…is demolishing the memory wall" with a scalability-focused subhead.
+- Moves the **Leadership team** directly under the hero (people-first).
+- Removes the "Why us / 15 tapeouts" section for now (revisit later).
+- Retitles the team logo strip to "Leaders from Ayar Labs, Micron, Broadcom, Marvell, AMD, Lightmatter, and Groq…".
+- Expands **Backers** from two names to the full list with company/role, featuring Sam Altman, Jeff Dean, and Dylan Patel.
+- Removes the **Traction** block (can't disclose customers) and the **Press** block (no coverage yet).
+- CTA becomes "Join us in building something foundational." with a single primary action; drops "Investor inquiries."
