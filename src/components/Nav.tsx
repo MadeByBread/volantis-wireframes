@@ -89,7 +89,7 @@ export default function Nav() {
             >
               <div className="overflow-hidden">
                 <nav
-                  className="flex flex-col gap-1 px-4 pb-4"
+                  className="flex flex-col gap-0 px-4 pt-2 pb-4"
                   aria-label="Main navigation"
                 >
                   {links.map((link) => (
@@ -98,7 +98,7 @@ export default function Nav() {
                       to={link.to}
                       onClick={() => setOpenPath(null)}
                       className={({ isActive }) =>
-                        `cursor-pointer rounded-md px-2 py-2 text-sm font-medium transition-colors ${
+                        `cursor-pointer rounded-md px-2 py-1 font-mono text-base uppercase transition-colors ${
                           isActive
                             ? "bg-[#e7e5e4] text-neutral-900"
                             : "text-neutral-600 hover:bg-[#eceae8] hover:text-neutral-900"

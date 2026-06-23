@@ -1,43 +1,81 @@
 import { Link } from "react-router-dom";
 
+const CHIP_CLASS =
+  "flex h-14 w-14 items-center justify-center rounded-md bg-neutral-300 text-[14px] font-semibold uppercase tracking-wide text-neutral-700";
+
+/** Small orange chip: one ring of squares around the core, minimal fill style. */
+function ElectricalTile() {
+  return (
+    <div className="aspect-square w-[110px] rounded-lg border-2 border-[#ff5500]/60 bg-[#ff5500]/10 p-1.5">
+      <div className="relative grid h-full grid-cols-5 grid-rows-5 gap-0.5">
+        {Array.from({ length: 25 }).map((_, i) => {
+          const r = Math.floor(i / 5);
+          const c = i % 5;
+          const isRing = r === 0 || r === 4 || c === 0 || c === 4;
+          if (!isRing) return <div key={i} />;
+          return (
+            <div
+              key={i}
+              className="aspect-square rounded-sm bg-[#ff5500]/70"
+              aria-hidden
+            />
+          );
+        })}
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+          <div className={CHIP_CLASS}>Chip</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+const OPTICAL_GRID_STYLE = {
+  backgroundImage: `
+    linear-gradient(to right, rgba(34, 211, 238, 0.15) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(34, 211, 238, 0.15) 1px, transparent 1px)
+  `,
+  backgroundSize: "10% 10%",
+} as const;
+
+/** Large optical reach: 10×10 line grid with the chip centered. */
+function OpticalTile() {
+  return (
+    <div className="rounded-lg border border-cyan-400/30 p-10">
+      <div
+        className="relative aspect-square w-full min-w-0"
+        style={OPTICAL_GRID_STYLE}
+      >
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className={CHIP_CLASS}>Chip</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function MemoryReachDiagram() {
   return (
     <figure
-      className="mt-10 overflow-hidden rounded-xl bg-neutral-900 p-6 sm:p-10"
+      className="mt-10 overflow-visible rounded-xl bg-neutral-900 p-6 sm:p-10"
       aria-label="Comparison of electrical interconnect reach versus Volantis optical reach"
     >
       <div className="grid gap-8 md:grid-cols-2 md:gap-12">
-        {/* Electrical interconnect */}
         <div className="flex flex-col items-center">
-          <div className="relative flex h-48 w-full max-w-[220px] items-center justify-center sm:h-56">
-            <div className="absolute inset-0 rounded-lg border-2 border-[#ff5500]/60 bg-[#ff5500]/10" />
-            <div className="relative z-10 flex h-14 w-14 items-center justify-center rounded-md bg-[#ff5500] text-[10px] font-semibold uppercase tracking-wide text-white">
-              Chip
-            </div>
+          <div className="flex w-full flex-1 items-center justify-center py-10">
+            <ElectricalTile />
           </div>
-          <figcaption className="mt-4 text-center text-sm text-neutral-400">
+          <figcaption className="mt-4 shrink-0 text-center text-sm text-neutral-400">
             Electrical interconnect reach
           </figcaption>
         </div>
 
-        {/* Volantis optical reach */}
         <div className="flex flex-col items-center">
-          <div className="relative flex h-48 w-full items-center justify-center sm:h-56">
-            <div
-              className="absolute inset-0 rounded-lg border border-cyan-400/30"
-              style={{
-                backgroundImage: `
-                  linear-gradient(to right, rgba(34, 211, 238, 0.15) 1px, transparent 1px),
-                  linear-gradient(to bottom, rgba(34, 211, 238, 0.15) 1px, transparent 1px)
-                `,
-                backgroundSize: "24px 24px",
-              }}
-            />
-            <div className="relative z-10 flex h-14 w-14 items-center justify-center rounded-md bg-[#ff5500] text-[10px] font-semibold uppercase tracking-wide text-white">
-              Chip
+          <div className="flex w-full flex-1 items-center justify-center py-10">
+            <div className="w-full max-w-[320px]">
+              <OpticalTile />
             </div>
           </div>
-          <figcaption className="mt-4 text-center text-sm text-neutral-400">
+          <figcaption className="mt-4 shrink-0 text-center text-sm text-neutral-400">
             Volantis optical reach
           </figcaption>
         </div>
@@ -45,7 +83,7 @@ function MemoryReachDiagram() {
 
       <div className="mt-8 flex flex-wrap items-center justify-center gap-6 border-t border-neutral-700 pt-6">
         <div className="flex items-center gap-2">
-          <span className="h-3 w-3 rounded-sm bg-[#ff5500]" aria-hidden />
+          <span className="h-3 w-3 rounded-sm bg-[#ff5500]/70" aria-hidden />
           <span className="text-xs text-neutral-400">
             Electrical interconnect reach
           </span>
@@ -80,11 +118,11 @@ export default function MemoryReachSection() {
           put ~100x more memory next to a chip.
         </p>
 
-        <div className="mt-8 text-7xl font-semibold tracking-tight text-neutral-900 sm:text-8xl">
+        <div className="mt-16 text-7xl font-semibold tracking-tight text-neutral-900 sm:mt-20 sm:text-8xl">
           100x
         </div>
         <p className="mt-2 text-base font-semibold text-neutral-900">
-          100x memory reach
+          Memory reach
         </p>
         <p className="mt-1 max-w-2xl text-sm leading-snug text-neutral-600">
           Optical reach is ~100x longer than electrical interconnect.
