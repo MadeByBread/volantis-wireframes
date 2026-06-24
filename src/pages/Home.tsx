@@ -13,7 +13,8 @@ export default function Home() {
         <div className="site-container">
           <div className="pt-6 text-center">
             <h1 className="mx-auto max-w-[980px] text-[clamp(2.5rem,9vw,6.25rem)] font-normal leading-[0.9] tracking-tight text-[#0c0a09]">
-              More memory. <br /> More bandwidth. <br />{" "}
+              100x memory.
+              <br />{" "}
               <span className="whitespace-nowrap">At the speed of light.</span>
             </h1>
           </div>
@@ -80,10 +81,7 @@ export default function Home() {
         intro="DeepSeek-V3.2: 1,590 tokens/sec/user on Volantis. ~50 on the fastest GPU."
       >
         <div className="grid gap-4 sm:grid-cols-3">
-          <StatCard
-            stat=">30x"
-            label="Lower latency for 1T+ models at scale"
-          />
+          <StatCard stat=">30x" label="Lower latency for 1T+ models at scale" />
           <StatCard stat="15x" label="Tok/$ better serving economics" />
           <StatCard stat="6x" label="Tok/W energy efficiency" />
         </div>
